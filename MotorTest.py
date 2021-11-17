@@ -28,12 +28,12 @@ try:
     #pwm1.start(100)
     #pwm2.start(100)
 
-    GPIO.output(Motor1cw,GPIO.HIGH)
-    GPIO.output(Motor1ccw,GPIO.LOW) #turn HIGH for counterclockwise
+    GPIO.output(Motor1cw,GPIO.LOW)
+    GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
     GPIO.output(pwmPin1,GPIO.HIGH)
 
-    GPIO.output(Motor2cw,GPIO.LOW)
-    GPIO.output(Motor2ccw,GPIO.HIGH) #turn HIGH for counterclockwise
+    GPIO.output(Motor2cw,GPIO.HIGH)
+    GPIO.output(Motor2ccw,GPIO.LOW) #turn HIGH for counterclockwise
     GPIO.output(pwmPin2,GPIO.HIGH)
 
 except KeyboardInterrupt:
