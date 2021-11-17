@@ -36,6 +36,7 @@ try:
     GPIO.output(Motor2ccw,GPIO.LOW) #turn HIGH for counterclockwise
     GPIO.output(pwmPin2,GPIO.HIGH)
 
+    time.sleep(60)    
 except KeyboardInterrupt:
   print("Ending")
   GPIO.output(pwmPin1,GPIO.LOW)
