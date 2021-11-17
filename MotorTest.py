@@ -29,11 +29,11 @@ try:
 
   GPIO.output(Motor1cw,GPIO.HIGH)
   GPIO.output(Motor1ccw,GPIO.LOW) #turn HIGH for counterclockwise
-  GPIO.output(pwm1,GPIO.HIGH)
+  GPIO.output(pwmPin1,GPIO.HIGH)
 
   GPIO.output(Motor2cw,GPIO.LOW)
   GPIO.output(Motor2ccw,GPIO.HIGH) #turn HIGH for counterclockwise
-  GPIO.output(pwm2,GPIO.HIGH)
+  GPIO.output(pwmPin2,GPIO.HIGH)
 
 except KeyboardInterrupt:
   print("Ending")
