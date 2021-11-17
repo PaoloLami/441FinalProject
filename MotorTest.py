@@ -20,13 +20,13 @@ GPIO.setup(Motor2ccw,GPIO.OUT)
 GPIO.setup(pwmPin1, GPIO.OUT)
 GPIO.setup(pwmPin2, GPIO.OUT)
 
-pwm1=GPIO.PWM(pwmPin1,100)
-pwm2=GPIO.PWM(pwmPin2,100)
+#pwm1=GPIO.PWM(pwmPin1,100)
+#pwm2=GPIO.PWM(pwmPin2,100)
 
 try:
   while True:
-    pwm1.start(100)
-    pwm2.start(100)
+    #pwm1.start(100)
+    #pwm2.start(100)
 
     GPIO.output(Motor1cw,GPIO.HIGH)
     GPIO.output(Motor1ccw,GPIO.LOW) #turn HIGH for counterclockwise
@@ -35,10 +35,12 @@ try:
     GPIO.output(Motor2cw,GPIO.LOW)
     GPIO.output(Motor2ccw,GPIO.HIGH) #turn HIGH for counterclockwise
     GPIO.output(pwmPin2,GPIO.HIGH)
-    
+
 except KeyboardInterrupt:
   print("Ending")
-  pwm1.stop()
-  pwm2.stop()
+  GPIO.output(pwmPin1,GPIO.LOW)
+  GPIO.output(pwmPin2,GPIO.LOW)
+  #pwm1.stop()
+  #pwm2.stop()
 GPIO.cleanup() 
 
