@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 import time
 
 #SETUP shown here: https://www.rhydolabz.com/wiki/?p=11288
+GPIO.cleanup()
 GPIO.setwarnings(False)
 
 Motor1cw = 23 # Motor 1 +Red pin
@@ -22,10 +23,10 @@ GPIO.setup(Motor1EN, GPIO.OUT)
 GPIO.setup(Motor2EN, GPIO.OUT)
 
 #PWM setup
-M1cw=GPIO.PWM(Motor1EN,100)
-M1ccw=GPIO.PWM(Motor2EN,100)
-M2cw=GPIO.PWM(Motor1EN,100)
-M2ccw=GPIO.PWM(Motor2EN,100)
+M1cw=GPIO.PWM(Motor1cw,100)
+M1ccw=GPIO.PWM(Motor2cw,100)
+M2cw=GPIO.PWM(Motor1ccw,100)
+M2ccw=GPIO.PWM(Motor2ccw,100)
 pwm1=GPIO.PWM(Motor1EN,100)
 pwm2=GPIO.PWM(Motor2EN,100)
 pwm1.start(0)
