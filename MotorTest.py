@@ -17,8 +17,8 @@ GPIO.setup(Motor1ccw,GPIO.OUT)
 GPIO.setup(Motor2cw,GPIO.OUT)
 GPIO.setup(Motor2ccw,GPIO.OUT)
 
-GPIO.setup(Motor1EN, GPIO.OUT)
-GPIO.setup(Motor2EN, GPIO.OUT)
+#GPIO.setup(Motor1EN, GPIO.OUT)
+#GPIO.setup(Motor2EN, GPIO.OUT)
 
 #PWM setup
 #M1cw=GPIO.PWM(Motor1cw,100)
@@ -38,7 +38,7 @@ try:
 
     GPIO.output(Motor1cw,GPIO.LOW)
     GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
-    GPIO.output(Motor1EN,GPIO.HIGH)
+    #GPIO.output(Motor1EN,GPIO.HIGH)
     #speed1 = input("Set speed for motor 1: ")
     #dc1=int(speed1)
     #pwm1.ChangeDutyCycle(dc1)
@@ -46,7 +46,7 @@ try:
 
     GPIO.output(Motor2cw,GPIO.HIGH)
     GPIO.output(Motor2ccw,GPIO.LOW) #turn HIGH for counterclockwise
-    GPIO.output(Motor2EN,GPIO.HIGH)
+    #GPIO.output(Motor2EN,GPIO.HIGH)
     #speed2 = input("Set speed for motor 2: ")
     #dc2=int(speed2)
     #pwm2.ChangeDutyCycle(dc2)
@@ -54,8 +54,8 @@ try:
 
     time.sleep(300)
 
-    GPIO.output(Motor1EN,GPIO.LOW)
-    GPIO.output(Motor2EN,GPIO.LOW)
+    #GPIO.output(Motor1EN,GPIO.LOW)
+    #GPIO.output(Motor2EN,GPIO.LOW)
     #pwm1.stop(0)
     #pwm2.stop(0)
     #M1cw.stop(0)
@@ -67,8 +67,10 @@ try:
 
 except KeyboardInterrupt:
   print("Ending")
-  GPIO.output(Motor1EN,GPIO.LOW)
-  GPIO.output(Motor2EN,GPIO.LOW)
+  GPIO.output(Motor2cw,GPIO.LOW)
+  GPIO.output(Motor1ccw,GPIO.LOW)
+  #GPIO.output(Motor1EN,GPIO.LOW)
+  #GPIO.output(Motor2EN,GPIO.LOW)
   #pwm1.stop(0)
   #pwm2.stop(0)
   #M1cw.stop(0)
