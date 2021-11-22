@@ -40,15 +40,17 @@ try:
     #GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
     #GPIO.output(Motor1EN,GPIO.HIGH)
     speed1 = input("Set speed for motor 1: ")
-    pwm1.ChangeDutyCycle(speed1)
-    M1ccw.ChangeDutyCycle(speed1)
+    dc1=int(speed1)
+    pwm1.ChangeDutyCycle(dc1)
+    M1ccw.ChangeDutyCycle(dc1)
 
     #GPIO.output(Motor2cw,GPIO.HIGH)
     #GPIO.output(Motor2ccw,GPIO.LOW) #turn HIGH for counterclockwise
     #GPIO.output(Motor2EN,GPIO.HIGH)
     speed2 = input("Set speed for motor 2: ")
-    pwm2.ChangeDutyCycle(speed2)
-    M2cw.ChangeDutyCycle(speed2)
+    dc2=int(speed2)
+    pwm2.ChangeDutyCycle(dc2)
+    M2cw.ChangeDutyCycle(dc2)
 
     time.sleep(300)
 
