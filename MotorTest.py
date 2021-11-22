@@ -39,14 +39,14 @@ try:
     #GPIO.output(Motor1cw,GPIO.LOW)
     #GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
     #GPIO.output(Motor1EN,GPIO.HIGH)
-    pwm1.setDutyCycle(99)
-    M1ccw.setDutyCycle(99)
+    pwm1.ChangeDutyCycle(99)
+    M1ccw.ChangeDutyCycle(99)
 
     #GPIO.output(Motor2cw,GPIO.HIGH)
     #GPIO.output(Motor2ccw,GPIO.LOW) #turn HIGH for counterclockwise
     #GPIO.output(Motor2EN,GPIO.HIGH)
-    pwm2.setDutyCycle(99)
-    M2cw.setDutyCycle(99)
+    pwm2.ChangeDutyCycle(99)
+    M2cw.ChangeDutyCycle(99)
 
     time.sleep(300)
 
