@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 import time
 
 #SETUP shown here: https://www.rhydolabz.com/wiki/?p=11288
+GPIO.setwarnings(False)
 
 Motor1cw = 23 # Motor 1 +Red pin
 Motor1ccw = 24 # Motor 1 +Ground pin
