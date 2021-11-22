@@ -52,7 +52,7 @@ try:
     #pwm2.ChangeDutyCycle(dc2)
     #M2cw.ChangeDutyCycle(dc2)
 
-    time.sleep(300)
+    time.sleep(10)
 
     #GPIO.output(Motor1EN,GPIO.LOW)
     GPIO.output(Motor2EN,GPIO.LOW)
