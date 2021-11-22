@@ -3,17 +3,17 @@ import time
 
 #SETUP shown here: https://www.rhydolabz.com/wiki/?p=11288
 
-Motor1cw = 23 # Motor 1 +Red pin
-Motor1ccw = 24 # Motor 1 +Ground pin
+#Motor1cw = 23 # Motor 1 +Red pin
+#Motor1ccw = 24 # Motor 1 +Ground pin
 Motor2cw = 5 # Motor 2 +Red pin
 Motor2ccw = 6 # Motor 2 +Ground pin
-Motor1EN = 25 #Enabler for motor 1
-Motor2EN = 26 #Enabler for motor 2
+#Motor1EN = 25 #Enabler for motor 1
+#Motor2EN = 26 #Enabler for motor 2
 #Plug both Vcc to Pi 5V
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(Motor1cw,GPIO.OUT) 
-GPIO.setup(Motor1ccw,GPIO.OUT)
+#GPIO.setup(Motor1cw,GPIO.OUT) 
+#GPIO.setup(Motor1ccw,GPIO.OUT)
 GPIO.setup(Motor2cw,GPIO.OUT)
 GPIO.setup(Motor2ccw,GPIO.OUT)
 
@@ -36,8 +36,8 @@ GPIO.setup(Motor2ccw,GPIO.OUT)
 
 try:
 
-    GPIO.output(Motor1cw,GPIO.LOW)
-    GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
+    #GPIO.output(Motor1cw,GPIO.LOW)
+    #GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
     #GPIO.output(Motor1EN,GPIO.HIGH)
     #speed1 = input("Set speed for motor 1: ")
     #dc1=int(speed1)
@@ -68,7 +68,7 @@ try:
 except KeyboardInterrupt:
   print("Ending")
   GPIO.output(Motor2cw,GPIO.LOW)
-  GPIO.output(Motor1ccw,GPIO.LOW)
+  #GPIO.output(Motor1ccw,GPIO.LOW)
   #GPIO.output(Motor1EN,GPIO.LOW)
   #GPIO.output(Motor2EN,GPIO.LOW)
   #pwm1.stop(0)
