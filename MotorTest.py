@@ -8,7 +8,7 @@ import time
 Motor2cw = 5 # Motor 2 +Red pin
 Motor2ccw = 6 # Motor 2 +Ground pin
 #Motor1EN = 25 #Enabler for motor 1
-#Motor2EN = 26 #Enabler for motor 2
+Motor2EN = 26 #Enabler for motor 2
 #Plug both Vcc to Pi 5V
 
 GPIO.setmode(GPIO.BCM)
@@ -18,7 +18,7 @@ GPIO.setup(Motor2cw,GPIO.OUT)
 GPIO.setup(Motor2ccw,GPIO.OUT)
 
 #GPIO.setup(Motor1EN, GPIO.OUT)
-#GPIO.setup(Motor2EN, GPIO.OUT)
+GPIO.setup(Motor2EN, GPIO.OUT)
 
 #PWM setup
 #M1cw=GPIO.PWM(Motor1cw,100)
@@ -46,7 +46,7 @@ try:
 
     GPIO.output(Motor2cw,GPIO.LOW)
     GPIO.output(Motor2ccw,GPIO.HIGH) #turn HIGH for counterclockwise
-    #GPIO.output(Motor2EN,GPIO.HIGH)
+    GPIO.output(Motor2EN,GPIO.HIGH)
     #speed2 = input("Set speed for motor 2: ")
     #dc2=int(speed2)
     #pwm2.ChangeDutyCycle(dc2)
@@ -55,7 +55,7 @@ try:
     time.sleep(300)
 
     #GPIO.output(Motor1EN,GPIO.LOW)
-    #GPIO.output(Motor2EN,GPIO.LOW)
+    GPIO.output(Motor2EN,GPIO.LOW)
     #pwm1.stop(0)
     #pwm2.stop(0)
     #M1cw.stop(0)
