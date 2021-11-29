@@ -59,7 +59,7 @@ try:
     for dc in range(dcMin,dcMax):
       pwmServo.ChangeDutyCycle(dc)
       print(dc)
-      time.sleep(0.03)
+      time.sleep(0.025)
     time.sleep(1)  
     pwmServo.ChangeDutyCycle(dcMin)  
     
