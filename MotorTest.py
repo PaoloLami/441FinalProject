@@ -17,7 +17,7 @@ servoPin = 4
 
 
 dcMin = 3
-dcMax = 11
+dcMax = 12
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(Motor1cw,GPIO.OUT) 
