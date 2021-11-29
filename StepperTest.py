@@ -1,3 +1,4 @@
+import RPi.GPIO as GPIO
 import stepper
 import time
 
@@ -8,3 +9,4 @@ angle=int(angle)
 
 stepper.goAngle(angle,dir)
 time.sleep(1)
+GPIO.cleanup
