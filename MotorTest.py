@@ -12,6 +12,12 @@ Motor1EN = 25 #Enabler for motor 1
 Motor2EN = 26 #Enabler for motor 2
 #Plug both Vcc to Pi 5V
 
+servoPin = 4
+GPIO.setup(servoPin, GPIO.OUT)
+
+dcMin = 3.5
+dcMax = 9.5
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(Motor1cw,GPIO.OUT) 
 GPIO.setup(Motor1ccw,GPIO.OUT)
@@ -24,6 +30,8 @@ GPIO.setup(Motor2EN, GPIO.OUT)
 #PWM setup
 pwm1=GPIO.PWM(Motor1EN,100)
 pwm2=GPIO.PWM(Motor2EN,100)
+pwmServo = GPIO.PWM(servoPin, 50) # PWM object at 50 Hz (20 ms period)
+pwmServo.start(0)
 pwm1.start(0)
 pwm2.start(0)
 
@@ -33,16 +41,24 @@ try:
     GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
     speed1 = input("Set speed for motor 1: ")
     dc1=int(speed1)
-    pwm1.ChangeDutyCycle(dc1)
- 
 
-    GPIO.output(Motor2cw,GPIO.LOW)
-    GPIO.output(Motor2ccw,GPIO.HIGH) #turn HIGH for counterclockwise
+    GPIO.output(Motor2cw,GPIO.HIGH)
+    GPIO.output(Motor2ccw,GPIO.LOW) #turn HIGH for counterclockwise
     speed2 = input("Set speed for motor 2: ")
     dc2=int(speed2)
+
+
+    pwm1.ChangeDutyCycle(dc1)
     pwm2.ChangeDutyCycle(dc2)
 
-    time.sleep(20)
+    for dc in range(dcMin,dcMax):
+      pwmServo.ChangeDutyCycle(dc)
+      print(dc)
+      time.sleep(0.8)
+    time.sleep(1)
+    
+    
+    time.sleep(10)
 
     pwm1.stop(0)
     pwm2.stop(0)
