@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 
-pinled = 5
-switch = 6
+pinled = 18
+switch = 17
 
 GPIO.setmode(GPIO.BCM)
 #GPIO.setup(Motor1cw,GPIO.OUT) 
