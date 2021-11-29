@@ -33,7 +33,7 @@ def halfstep(dir):
 
 #Takes angle of travel from text file and converts it into number of halfsteps required 
 def goAngle(ang,dir):
-  numhalfstep = int(ang/0.08) #conversion from angle to number of halfsteps
+  numhalfstep = int(ang/0.087875) #conversion from angle to number of halfsteps
   direction = dir
   for step in range(numhalfstep):
       halfstep(direction)
