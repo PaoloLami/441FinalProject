@@ -41,9 +41,7 @@ try:
   dc1=int(speed1)
   speed2 = input("Set speed for motor 2: ")
   dc2=int(speed2)
-  pwm1.ChangeDutyCycle(dc1)
-  pwm2.ChangeDutyCycle(dc2)
-  time.sleep(6)
+  
   while True:
     GPIO.output(Motor1cw,GPIO.LOW)
     GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
@@ -54,9 +52,9 @@ try:
   
 
 
-    #pwm1.ChangeDutyCycle(dc1)
-    #pwm2.ChangeDutyCycle(dc2)
-    time.sleep(3)
+    pwm1.ChangeDutyCycle(dc1)
+    pwm2.ChangeDutyCycle(dc2)
+    time.sleep(6)
     
     for dc in range(dcMin,dcMax):
       pwmServo.ChangeDutyCycle(dc)
