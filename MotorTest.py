@@ -17,7 +17,7 @@ servoPin = 4
 
 
 dcMin = 3
-dcMax = 9
+dcMax = 10
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(Motor1cw,GPIO.OUT) 
@@ -51,14 +51,14 @@ try:
 
     pwm1.ChangeDutyCycle(dc1)
     pwm2.ChangeDutyCycle(dc2)
-
+    time.sleep(0.5)
     
     for dc in range(dcMin,dcMax):
       pwmServo.ChangeDutyCycle(dc)
       print(dc)
-      time.sleep(0.05)
+      time.sleep(0.09)
+    time.sleep(1)  
     pwmServo.ChangeDutyCycle(dcMin)  
-    time.sleep(1)
     
     
     time.sleep(10)
