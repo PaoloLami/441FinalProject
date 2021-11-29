@@ -64,10 +64,10 @@ try:
     pwmServo.ChangeDutyCycle(dcMin)  
     
     
-    time.sleep(3)
+    time.sleep(2)
 
-    pwm1.stop(0)
-    pwm2.stop(0)
+    #pwm1.stop(0)
+    #pwm2.stop(0)
 
    
 
