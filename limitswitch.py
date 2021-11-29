@@ -10,7 +10,7 @@ GPIO.setup(pinled,GPIO.OUT)
 GPIO.setup(switch,GPIO.IN)
 
 while True:
-  if switch == GPIO.HIGH:
+  if GPIO.input(switch):
     GPIO.output(pinled,GPIO.HIGH)
   else:
     GPIO.output(pinled,GPIO.LOW)
