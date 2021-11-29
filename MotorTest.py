@@ -54,7 +54,7 @@ try:
 
     pwm1.ChangeDutyCycle(dc1)
     pwm2.ChangeDutyCycle(dc2)
-    time.sleep(4)
+    time.sleep(6)
     
     for dc in range(dcMin,dcMax):
       pwmServo.ChangeDutyCycle(dc)
