@@ -17,7 +17,7 @@ servoPin = 4
 
 
 dcMin = 3
-dcMax = 10
+dcMax = 11
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(Motor1cw,GPIO.OUT) 
@@ -41,7 +41,7 @@ try:
   dc1=int(speed1)
   speed2 = input("Set speed for motor 2: ")
   dc2=int(speed2)
-  
+
   while True:
     GPIO.output(Motor1cw,GPIO.LOW)
     GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
