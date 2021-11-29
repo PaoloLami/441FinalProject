@@ -29,11 +29,11 @@ def halfstep(dir):
   elif state < 0: state = 7
   for pin in range(4): #4 pins that need to be energized
     GPIO.output(pins[pin],sequence[state][pin])
-  delay_us(1000) #decrease to make stepper motor faster
+  delay_us(2000) #decrease to make stepper motor faster
 
 #Takes angle of travel from text file and converts it into number of halfsteps required 
 def goAngle(ang,dir):
-  numhalfstep = int(ang/0.087875) #conversion from angle to number of halfsteps
+  numhalfstep = int(ang/0.08) #conversion from angle to number of halfsteps
   direction = dir
   for step in range(numhalfstep):
       halfstep(direction)
