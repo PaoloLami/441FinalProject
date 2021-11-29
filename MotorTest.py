@@ -52,11 +52,11 @@ try:
     pwm1.ChangeDutyCycle(dc1)
     pwm2.ChangeDutyCycle(dc2)
 
-    pwmServo.ChangeDutyCycle(dcMin)
+    
     for dc in range(dcMin,dcMax):
       pwmServo.ChangeDutyCycle(dc)
       print(dc)
-      time.sleep(0.01)
+      time.sleep(0.05)
     pwmServo.ChangeDutyCycle(dcMin)  
     time.sleep(1)
     
