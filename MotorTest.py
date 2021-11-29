@@ -12,8 +12,9 @@ Motor1EN = 25 #Enabler for motor 1
 Motor2EN = 26 #Enabler for motor 2
 #Plug both Vcc to Pi 5V
 
+
 servoPin = 4
-GPIO.setup(servoPin, GPIO.OUT)
+
 
 dcMin = 3.5
 dcMax = 9.5
@@ -23,7 +24,7 @@ GPIO.setup(Motor1cw,GPIO.OUT)
 GPIO.setup(Motor1ccw,GPIO.OUT)
 GPIO.setup(Motor2cw,GPIO.OUT)
 GPIO.setup(Motor2ccw,GPIO.OUT)
-
+GPIO.setup(servoPin, GPIO.OUT)
 GPIO.setup(Motor1EN, GPIO.OUT)
 GPIO.setup(Motor2EN, GPIO.OUT)
 
