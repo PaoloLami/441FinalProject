@@ -12,7 +12,7 @@ GPIO.setup(pwmPin, GPIO.OUT)
 # around to find optimum values for your motor)
 
 dcMin = 3.5
-dcMax = 10
+dcMax = 9.5
 
 pwm = GPIO.PWM(pwmPin, 50) # PWM object at 50 Hz (20 ms period)
 pwm.start(0)
