@@ -37,16 +37,19 @@ pwm1.start(0)
 pwm2.start(0)
 
 try:
-
+  speed1 = input("Set speed for motor 1: ")
+  dc1=int(speed1)
+  speed2 = input("Set speed for motor 2: ")
+  dc2=int(speed2)
+  
+  while True:
     GPIO.output(Motor1cw,GPIO.LOW)
     GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
-    speed1 = input("Set speed for motor 1: ")
-    dc1=int(speed1)
+
 
     GPIO.output(Motor2cw,GPIO.HIGH)
     GPIO.output(Motor2ccw,GPIO.LOW) #turn HIGH for counterclockwise
-    speed2 = input("Set speed for motor 2: ")
-    dc2=int(speed2)
+  
 
 
     pwm1.ChangeDutyCycle(dc1)
@@ -61,12 +64,12 @@ try:
     pwmServo.ChangeDutyCycle(dcMin)  
     
     
-    time.sleep(10)
+    time.sleep(3)
 
     pwm1.stop(0)
     pwm2.stop(0)
 
-    GPIO.cleanup()   
+   
 
 except KeyboardInterrupt:
   print("Ending")
