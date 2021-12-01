@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+import stepper
 
 #PMW WORKS, NEEDS MORE THAN 6V PER MOTOR TO RUN with h bridge
 #SETUP shown here: https://www.rhydolabz.com/wiki/?p=11288
@@ -42,6 +43,13 @@ try:
   dc1=int(speed1)
   speed2 = input("Set speed for motor 2: ") #50 lowest (right motor)
   dc2=int(speed2)
+  dir = input("Set direction: ")
+  dir=int(dir)
+  angle = input("Set angle: ")
+  angle=int(angle)  
+
+  stepper.goAngle(angle,dir)
+  time.sleep(2)
   
   while True:
     GPIO.output(Motor1cw,GPIO.LOW)
