@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import stepper
+import time
 
 #Set previous angle to 0 at start (needed for required halfsteps calculation first time)
 anglePREV = 0
@@ -24,16 +25,16 @@ try:
     if angleNEW == 0:
       GPIO.setup(ledPin, GPIO.OUT)  
       GPIO.output(ledPin,1) 
-      print('Resetting')
+      print('Set to 0')
       stepper.goAngle(90,-1)
     
     #Go to angle if angle is not 0 (from cgi file)
     else:
       GPIO.setup(ledPin, GPIO.OUT)
       GPIO.output(ledPin,0)  
-      print('Changing angle')
+      print(angleNEW)
       stepper.goAngle(angle,dir)
-
+    time.sleep(0.5)
     #Set the previous angle to the current angle for next iteration
     anglePREV = angleNEW
     

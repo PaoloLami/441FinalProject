@@ -37,9 +37,10 @@ pwm1.start(0)
 pwm2.start(0)
 
 try:
-  speed1 = input("Set speed for motor 1: ")
+  #Speed: set 3 levels (low med high)
+  speed1 = input("Set speed for motor 1: ") #55 lowest (left motor)
   dc1=int(speed1)
-  speed2 = input("Set speed for motor 2: ")
+  speed2 = input("Set speed for motor 2: ") #50 lowest (right motor)
   dc2=int(speed2)
   
   while True:
