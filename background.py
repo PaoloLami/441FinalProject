@@ -57,4 +57,5 @@ try:
     powerPREV = power
     
 except KeyboardInterrupt:
+  GPIO.cleanup()
   print("Exiting...")
