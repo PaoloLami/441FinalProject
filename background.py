@@ -31,6 +31,7 @@ try:
     #Reset function if angle is set to 0 (from cgi file)
     if angleNEW == 0:
       angle = 0
+      launchCheck = 0
       GPIO.setup(ledPinReset, GPIO.OUT)  
       GPIO.output(ledPinReset,1) 
       print('Set to 0')

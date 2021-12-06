@@ -15,15 +15,13 @@ power = data.getvalue('power')
 if ('launch' in data): 
   with open('angle.txt', 'w') as f:
     f.write(str(angle)) 
+  with open('power.txt','w') as f:
+    f.write(str(power))  
 
 #If the reset button was submitted, set angle to 0
 elif ('reset' in data): 
   with open('angle.txt', 'w') as f: 
     f.write(str(0)) 
-
-if ('power' in data):
-  with open('power.txt','w') as f:
-    f.write(str(power))
 
 print('Content-type: text/html\n\n')
 print('<html>')
