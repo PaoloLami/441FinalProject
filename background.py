@@ -5,7 +5,9 @@ import Launch
 
 #Set previous angle to 0 at start (needed for required halfsteps calculation first time)
 anglePREV = 0
-powerPREV = 0.5
+powerPREV = 0
+angle = 0
+launchCheck = 0
 ledPinReset = 19
 ledPinLaunch = 13
 GPIO.setmode(GPIO.BCM)
