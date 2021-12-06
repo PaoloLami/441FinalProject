@@ -14,7 +14,7 @@ Motor2EN = 26 #Enabler for motor 2
 
 servoPin = 4
 
-dcMin = 2
+dcMin = 3
 dcMax = 13
 
 GPIO.setmode(GPIO.BCM)
