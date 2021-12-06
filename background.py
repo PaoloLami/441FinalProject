@@ -17,8 +17,8 @@ try:
     #Read angle input from user in file
     with open('angle.txt', 'r') as f:
       angleNEW = int(f.read())
-    with open('power.txt', 'r') as f2:
-      power = int(f2.read())
+    with open('power.txt', 'r') as f:
+      power = int(f.read())
     #Calculate the required angle of movement needed  
     angle = angleNEW - anglePREV
     launchCheck = power-powerPREV

@@ -22,8 +22,8 @@ elif ('reset' in data):
     f.write(str(0)) 
 
 if ('power' in data):
-  with open('power.txt','w') as f2:
-    f2.write(str(power))
+  with open('power.txt','w') as f:
+    f.write(str(power))
 
 print('Content-type: text/html\n\n')
 print('<html>')
