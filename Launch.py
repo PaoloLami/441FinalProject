@@ -14,7 +14,7 @@ Motor2EN = 26 #Enabler for motor 2
 
 servoPin = 4
 
-dcMin = 3
+dcMin = 2
 dcMax = 12
 
 GPIO.setmode(GPIO.BCM)
@@ -38,14 +38,14 @@ def Launch(power):
   time.sleep(1)
   
   if power == 1:
-    dc1=60
-    dc2=55
+    dc1=65
+    dc2=60
   elif power == 2:
-    dc1=75
-    dc2=70
+    dc1=80
+    dc2=75
   elif power==3:
-    dc1=90
-    dc2=85
+    dc1=95
+    dc2=90
   
   GPIO.output(Motor1cw,GPIO.LOW)
   GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
@@ -55,14 +55,14 @@ def Launch(power):
   
   pwm1.ChangeDutyCycle(dc1)
   pwm2.ChangeDutyCycle(dc2)
-  time.sleep(6)
+  time.sleep(8)
 
   for dc in range(dcMin,dcMax):
     pwmServo.ChangeDutyCycle(dc)
     time.sleep(0.025)
-  time.sleep(1)  
+  time.sleep(1.5)  
   pwmServo.ChangeDutyCycle(dcMin)  
-  time.sleep(1)  
+  time.sleep(1.5)  
 
   pwm1.stop(0)
   pwm2.stop(0)
