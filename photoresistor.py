@@ -1,4 +1,4 @@
-import PCF8591 as PCF8591
+from PCF8591 import PCF8591
 
 sens = PCF8591(0x48)
 
