@@ -57,11 +57,13 @@ try:
 
         GPIO.setup(ledPinLaunch, GPIO.OUT)
         GPIO.output(ledPinLaunch,1) 
+        print(light)
         print("Launching!") 
         Launch.Launch(power)
         GPIO.output(ledPinLaunch,0) 
       elif light>499:
         print("No balls remaining, please insert ball")
+        print(light)
         time.sleep(0.2)  
 
     #Set the previous angle to the current angle for next iteration
