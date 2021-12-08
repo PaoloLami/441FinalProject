@@ -42,25 +42,23 @@ try:
       GPIO.output(ledPinReset,1) 
       print('Set to 0')
       stepper.goAngle(90,-1)
-    
-    #Go to angle if angle is not 0 (from cgi file)
-    else:
+
+    elif launchCheck != 0 or angle != 0:
       if light<500:
         GPIO.setup(ledPinReset, GPIO.OUT)
         GPIO.output(ledPinReset,0)  
         print(angleNEW)
         stepper.goAngle(angle,dir)
         time.sleep(0.5)
-      elif light>500:
-        print("No balls remaining, please insert ball")
 
-    if launchCheck != 0 or angle != 0:
-      if light<500:
         GPIO.setup(ledPinLaunch, GPIO.OUT)
         GPIO.output(ledPinLaunch,1) 
         print("Launching!") 
         Launch.Launch(power)
         GPIO.output(ledPinLaunch,0) 
+      elif light>500:
+        print("No balls remaining, please insert ball")
+        time.sleep(0.5)  
 
     #Set the previous angle to the current angle for next iteration
     anglePREV = angleNEW
