@@ -9,9 +9,9 @@ powerPREV = 0
 angle = 0
 launchCheck = 0
 
-with open('angle.txt', 'r') as f:
+with open('angle.txt', 'w') as f:
   f.write(str(0)) 
-with open('power.txt', 'r') as f:
+with open('power.txt', 'w') as f:
   f.write(str(0)) 
 
 ledPinReset = 19
