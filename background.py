@@ -48,7 +48,7 @@ try:
       stepper.goAngle(90,-1)
 
     elif launchCheck != 0 or angle != 0:
-      if light<500:
+      if light<499:
         GPIO.setup(ledPinReset, GPIO.OUT)
         GPIO.output(ledPinReset,0)  
         print(angleNEW)
@@ -60,7 +60,7 @@ try:
         print("Launching!") 
         Launch.Launch(power)
         GPIO.output(ledPinLaunch,0) 
-      elif light>500:
+      elif light>499:
         print("No balls remaining, please insert ball")
         time.sleep(0.2)  
 
