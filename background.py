@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+from PCF8591 import PCF8591
 import stepper
 import time
 import Launch
@@ -8,7 +9,8 @@ anglePREV = 0
 powerPREV = 0
 angle = 0
 launchCheck = 0
-
+sens = PCF8591(0x48)
+light = sens.read(1)*10 #reads data from the photoresistor
 ledPinReset = 19
 ledPinLaunch = 13
 GPIO.setmode(GPIO.BCM)
@@ -17,6 +19,7 @@ GPIO.setup(ledPinLaunch, GPIO.OUT)
 
 try:
   while True: 
+    light = sens.read(1)*10 #reads data from the photoresistor
     #Read angle input from user in file
     with open('angle.txt', 'r') as f:
       angleNEW = int(f.read())
@@ -42,18 +45,22 @@ try:
     
     #Go to angle if angle is not 0 (from cgi file)
     else:
-      GPIO.setup(ledPinReset, GPIO.OUT)
-      GPIO.output(ledPinReset,0)  
-      print(angleNEW)
-      stepper.goAngle(angle,dir)
-    time.sleep(0.5)
+      if light<500:
+        GPIO.setup(ledPinReset, GPIO.OUT)
+        GPIO.output(ledPinReset,0)  
+        print(angleNEW)
+        stepper.goAngle(angle,dir)
+        time.sleep(0.5)
+      elif light>500:
+        print("No balls remaining, please insert ball")
 
     if launchCheck != 0 or angle != 0:
-      GPIO.setup(ledPinLaunch, GPIO.OUT)
-      GPIO.output(ledPinLaunch,1) 
-      print("Launching!") 
-      Launch.Launch(power)
-      GPIO.output(ledPinLaunch,0) 
+      if light<500:
+        GPIO.setup(ledPinLaunch, GPIO.OUT)
+        GPIO.output(ledPinLaunch,1) 
+        print("Launching!") 
+        Launch.Launch(power)
+        GPIO.output(ledPinLaunch,0) 
 
     #Set the previous angle to the current angle for next iteration
     anglePREV = angleNEW
