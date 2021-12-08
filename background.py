@@ -19,12 +19,16 @@ GPIO.setup(ledPinLaunch, GPIO.OUT)
 
 try:
   while True: 
-    light = sens.read(1)*10 #reads data from the photoresistor
-    #Read angle input from user in file
     with open('angle.txt', 'r') as f:
       angleNEW = int(f.read())
     with open('power.txt', 'r') as f:
       power = int(f.read())
+    time.sleep(0.5)
+
+    light = sens.read(1)*10 #reads data from the photoresistor
+    time.sleep(0.1)
+
+    #Read angle input from user in file
     #Calculate the required angle of movement needed  
     angle = angleNEW - anglePREV
     launchCheck = power-powerPREV
@@ -49,7 +53,7 @@ try:
         GPIO.output(ledPinReset,0)  
         print(angleNEW)
         stepper.goAngle(angle,dir)
-        time.sleep(0.5)
+        time.sleep(0.2)
 
         GPIO.setup(ledPinLaunch, GPIO.OUT)
         GPIO.output(ledPinLaunch,1) 
@@ -58,7 +62,7 @@ try:
         GPIO.output(ledPinLaunch,0) 
       elif light>500:
         print("No balls remaining, please insert ball")
-        time.sleep(0.5)  
+        time.sleep(0.2)  
 
     #Set the previous angle to the current angle for next iteration
     anglePREV = angleNEW
