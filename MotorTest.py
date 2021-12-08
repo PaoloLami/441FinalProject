@@ -40,9 +40,9 @@ try:
   dc1=int(speed1)
   speed2 = input("Set speed for motor 2: ") #50 lowest (right motor)
   dc2=int(speed2)
-  dir = input("Set direction: ")
-  dir=int(dir)
-  time.sleep(2)
+  #dir = input("Set direction: ")
+  #dir=int(dir)
+  #time.sleep(2)
   
   while True:
     GPIO.output(Motor1cw,GPIO.LOW)
