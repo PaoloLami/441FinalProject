@@ -37,8 +37,8 @@ while True:
   pwm2.start(0)
   time.sleep(0.5)
 
-  dc1=72
-  dc2=67
+  dc1=75
+  dc2=70
  
   
   GPIO.output(Motor1cw,GPIO.LOW)
@@ -47,14 +47,10 @@ while True:
   GPIO.output(Motor2cw,GPIO.HIGH)
   GPIO.output(Motor2ccw,GPIO.LOW) #turn HIGH for counterclockwise
   
-  pwm1.ChangeDutyCycle(99)
-  time.sleep(3)
-  pwm2.ChangeDutyCycle(99)
-  time.sleep(3)
   pwm1.ChangeDutyCycle(dc1)
-  time.sleep(2)
-  pwm2.ChangeDutyCycle(dc2)
   time.sleep(3)
+  pwm2.ChangeDutyCycle(dc2)
+  time.sleep(5)
 
   for dc in range(dcMin,dcMax):
     pwmServo.ChangeDutyCycle(dc)
