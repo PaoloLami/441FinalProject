@@ -30,9 +30,9 @@ GPIO.setup(Motor2EN, GPIO.OUT)
 pwm1=GPIO.PWM(Motor1EN,100)
 pwm2=GPIO.PWM(Motor2EN,100)
 pwmServo = GPIO.PWM(servoPin, 50) # PWM object at 50 Hz (20 ms period)
+pwmServo.start(0)
 
 while True:
-  pwmServo.start(0)
   pwm1.start(0)
   pwm2.start(0)
   time.sleep(0.5)
@@ -62,4 +62,3 @@ while True:
 
   pwm1.stop(0)
   pwm2.stop(0)
-  pwmServo.stop(0)
