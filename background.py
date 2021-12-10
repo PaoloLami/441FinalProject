@@ -13,7 +13,7 @@ sens = PCF8591(0x48)
 #light = sens.read(1) #reads data from the photoresistor
 ledPinReset = 19
 ledPinLaunch = 13
-ledPinBalls=0
+ledPinBalls=18
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(ledPinReset, GPIO.OUT)
 GPIO.setup(ledPinLaunch, GPIO.OUT)
