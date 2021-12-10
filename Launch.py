@@ -54,8 +54,9 @@ def Launch(power):
   GPIO.output(Motor2ccw,GPIO.LOW) #turn HIGH for counterclockwise
   
   pwm1.ChangeDutyCycle(dc1)
+  time.sleep(2)
   pwm2.ChangeDutyCycle(dc2)
-  time.sleep(8)
+  time.sleep(4)
 
   for dc in range(dcMin,dcMax):
     pwmServo.ChangeDutyCycle(dc)
