@@ -1,30 +1,69 @@
-# Basic code for servo control using manual PWM
-# Set PWM period = 20 ms
-# 1 ms ON = full CW = 5% duty cycle
-# 2 ms ON = full CCW = 10% duty cycle
-
 import RPi.GPIO as GPIO
 import time
-GPIO.setmode(GPIO.BCM)
-pwmPin = 4
-GPIO.setup(pwmPin, GPIO.OUT)
-# set min & max % duty cycles (5 and 10 are default values, but play
-# around to find optimum values for your motor)
+
+#PMW WORKS, NEEDS MORE THAN 6V PER MOTOR TO RUN with h bridge
+#SETUP shown here: https://www.rhydolabz.com/wiki/?p=11288
+
+Motor1cw = 23 # Motor 1 +Red pin
+Motor1ccw = 24 # Motor 1 +Ground pin
+Motor2cw = 5 # Motor 2 +Red pin
+Motor2ccw = 6 # Motor 2 +Ground pin
+Motor1EN = 25 #Enabler for motor 1
+Motor2EN = 26 #Enabler for motor 2
+#Plug both Vcc to Pi 5V
+
+servoPin = 4
 
 dcMin = 3
-dcMax = 12
+dcMax = 11
 
-pwm = GPIO.PWM(pwmPin, 50) # PWM object at 50 Hz (20 ms period)
-pwm.start(0)
-try:
-  while True:
-    #for dc in range(dcMin,dcMax):
-    pwm.ChangeDutyCycle(dcMin)
-      #print(dc)
-    time.sleep(1)
-    pwm.ChangeDutyCycle(dcMax)
-    time.sleep(1)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(Motor1cw,GPIO.OUT) 
+GPIO.setup(Motor1ccw,GPIO.OUT)
+GPIO.setup(Motor2cw,GPIO.OUT)
+GPIO.setup(Motor2ccw,GPIO.OUT)
+GPIO.setup(servoPin, GPIO.OUT)
+GPIO.setup(Motor1EN, GPIO.OUT)
+GPIO.setup(Motor2EN, GPIO.OUT)
 
-except KeyboardInterrupt:
-  print("bye")
-GPIO.cleanup() 
+#PWM setup
+pwm1=GPIO.PWM(Motor1EN,100)
+pwm2=GPIO.PWM(Motor2EN,100)
+pwmServo = GPIO.PWM(servoPin, 50) # PWM object at 50 Hz (20 ms period)
+
+while True:
+  pwmServo.start(0)
+  pwm1.start(0)
+  pwm2.start(0)
+  time.sleep(0.5)
+
+  dc1=72
+  dc2=67
+ 
+  
+  GPIO.output(Motor1cw,GPIO.LOW)
+  GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
+
+  GPIO.output(Motor2cw,GPIO.HIGH)
+  GPIO.output(Motor2ccw,GPIO.LOW) #turn HIGH for counterclockwise
+  
+  pwm1.ChangeDutyCycle(99)
+  time.sleep(3)
+  pwm2.ChangeDutyCycle(99)
+  time.sleep(3)
+  pwm1.ChangeDutyCycle(dc1)
+  time.sleep(2)
+  pwm2.ChangeDutyCycle(dc2)
+  time.sleep(3)
+
+  for dc in range(dcMin,dcMax):
+    pwmServo.ChangeDutyCycle(dc)
+    time.sleep(0.025)
+  time.sleep(1.5)  
+  pwmServo.ChangeDutyCycle(dcMin)  
+  time.sleep(1.5)  
+  print('servo ran')
+
+  pwm1.stop(0)
+  pwm2.stop(0)
+  pwmServo.stop(0)
