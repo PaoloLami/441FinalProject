@@ -76,9 +76,13 @@ try:
         GPIO.setup(ledPinReset, GPIO.OUT)
         GPIO.output(ledPinReset,1)
         GPIO.setup(ledPinBalls, GPIO.OUT)
-        GPIO.output(ledPinBalls,0)
-        time.sleep(5)  
-
+        for n in range(7):
+          GPIO.output(ledPinBalls,0) 
+          time.sleep(0.6)
+          GPIO.output(ledPinBalls,1)
+          time.sleep(0.1)
+        GPIO.output(ledPinBalls,1)
+        
     #Set the previous angle to the current angle for next iteration
     #anglePREV = angleNEW
     #powerPREV = power
