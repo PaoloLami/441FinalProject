@@ -10,7 +10,7 @@ powerPREV = 0
 angle = 0
 launchCheck = 0
 sens = PCF8591(0x48)
-#light = sens.read(1) #reads data from the photoresistor
+light = sens.read(1)*10 #reads data from the photoresistor
 ledPinReset = 19
 ledPinLaunch = 13
 ledPinBalls=18
@@ -30,8 +30,8 @@ try:
       power = int(f.read())
     time.sleep(0.5)
 
-    #light = sens.read(1) #reads data from the photoresistor
-    #time.sleep(0.1)
+    light = sens.read(1)*10 #reads data from the photoresistor
+    time.sleep(0.1)
 
     #Read angle input from user in file
     #Calculate the required angle of movement needed  
@@ -53,7 +53,7 @@ try:
     #  stepper.goAngle(90,-1)
 
     elif power != 0 or angle != 0:
-      #if light<190:
+      if light<1655:
         GPIO.setup(ledPinReset, GPIO.OUT)
         GPIO.output(ledPinReset,1)  
         print(angle)
@@ -71,10 +71,13 @@ try:
         GPIO.output(ledPinReset,0) 
         print('Resetting')
         stepper.goAngle(90,-1)
-      #elif light>=190:
-        #print("No balls remaining, please insert ball")
-        #print(light);
-        #time.sleep(0.2)  
+      elif light>=1655:
+        print("No balls remaining, please insert ball")
+        GPIO.setup(ledPinReset, GPIO.OUT)
+        GPIO.output(ledPinReset,1)
+        GPIO.setup(ledPinBalls, GPIO.OUT)
+        GPIO.output(ledPinBalls,0)
+        time.sleep(5)  
 
     #Set the previous angle to the current angle for next iteration
     #anglePREV = angleNEW
