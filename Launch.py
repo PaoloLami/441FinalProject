@@ -39,8 +39,8 @@ def Launch(power):
   time.sleep(2.5)
   
   if power == 1:
-    dc1=50
-    dc2=55
+    dc1=60
+    dc2=65
   elif power == 2:
     dc1=75
     dc2=80
