@@ -33,8 +33,8 @@ pwmServo = GPIO.PWM(servoPin, 50) # PWM object at 50 Hz (20 ms period)
 pwmServo.start(dcMin)
 
 def Launch(power):
-  pwm1.start(0)
-  pwm2.start(0)
+  pwm2.start(95)
+  pwm1.start(95)
   time.sleep(0.5)
   
   if power == 1:
@@ -52,13 +52,11 @@ def Launch(power):
 
   GPIO.output(Motor2cw,GPIO.HIGH)
   GPIO.output(Motor2ccw,GPIO.LOW) #turn HIGH for counterclockwise
-  
-  pwm1.ChangeDutyCycle(95)
+
   time.sleep(2)
-  pwm2.ChangeDutyCycle(95)
-  time.sleep(1)
+ 
   pwm1.ChangeDutyCycle(dc1)
-  time.sleep(2)
+  time.sleep(1)
   pwm2.ChangeDutyCycle(dc2)
   time.sleep(3)
 
