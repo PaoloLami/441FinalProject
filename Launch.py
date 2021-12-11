@@ -38,14 +38,14 @@ def Launch(power):
   time.sleep(0.5)
   
   if power == 1:
-    dc1=72
-    dc2=67
-  elif power == 2:
-    dc1=85
+    dc1=73
     dc2=70
+  elif power == 2:
+    dc1=83
+    dc2=80
   elif power==3:
     dc1=95
-    dc2=90
+    dc2=92
   
   GPIO.output(Motor1cw,GPIO.LOW)
   GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
@@ -56,11 +56,11 @@ def Launch(power):
   pwm1.ChangeDutyCycle(95)
   time.sleep(2)
   pwm2.ChangeDutyCycle(95)
-  time.sleep(2)
+  time.sleep(1)
   pwm1.ChangeDutyCycle(dc1)
   time.sleep(2)
   pwm2.ChangeDutyCycle(dc2)
-  time.sleep(4)
+  time.sleep(3)
 
   for dc in range(dcMin,dcMax):
     pwmServo.ChangeDutyCycle(dc)
