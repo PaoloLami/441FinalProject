@@ -30,9 +30,9 @@ GPIO.setup(Motor2EN, GPIO.OUT)
 pwm1=GPIO.PWM(Motor1EN,100)
 pwm2=GPIO.PWM(Motor2EN,100)
 pwmServo = GPIO.PWM(servoPin, 50) # PWM object at 50 Hz (20 ms period)
+pwmServo.start(dcMin)
 
 def Launch(power):
-  pwmServo.start(0)
   pwm1.start(0)
   pwm2.start(0)
   time.sleep(0.5)
@@ -53,14 +53,14 @@ def Launch(power):
   GPIO.output(Motor2cw,GPIO.HIGH)
   GPIO.output(Motor2ccw,GPIO.LOW) #turn HIGH for counterclockwise
   
-  pwm1.ChangeDutyCycle(99)
-  time.sleep(3)
-  pwm2.ChangeDutyCycle(99)
-  time.sleep(3)
+  pwm1.ChangeDutyCycle(95)
+  time.sleep(2)
+  pwm2.ChangeDutyCycle(95)
+  time.sleep(2)
   pwm1.ChangeDutyCycle(dc1)
   time.sleep(2)
   pwm2.ChangeDutyCycle(dc2)
-  time.sleep(3)
+  time.sleep(4)
 
   for dc in range(dcMin,dcMax):
     pwmServo.ChangeDutyCycle(dc)
@@ -68,10 +68,9 @@ def Launch(power):
   time.sleep(1.5)  
   pwmServo.ChangeDutyCycle(dcMin)  
   time.sleep(1.5)  
-  print('servo ran')
 
   pwm1.stop(0)
   pwm2.stop(0)
-  pwmServo.stop(0)
+
 
 

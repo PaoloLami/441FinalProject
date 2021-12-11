@@ -44,7 +44,11 @@ try:
    while True:
       dist = distance()
       print ("Measured Distance = %.1f cm" % dist)
-      time.sleep(0.01)
+      if dist < 5:
+        print ("Ball went in!")
+      if dist > 5:
+        print ("Missed the target...")
+      time.sleep(1)
  
 # Reset by pressing CTRL + C
 except KeyboardInterrupt:
