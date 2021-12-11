@@ -1,8 +1,8 @@
 #!/usr/bin/python37all
-#Paolo Lami, ENME441 Lab5
+#441 Final
 
 import cgi
-import stepper
+import time
 
 #Get data from html
 data = cgi.FieldStorage()
@@ -16,7 +16,13 @@ if ('launch' in data):
   with open('angle.txt', 'w') as f:
     f.write(str(angle)) 
   with open('power.txt','w') as f:
-    f.write(str(power))  
+    f.write(str(power))
+  time.sleep(4) 
+  
+  with open('angle.txt', 'w') as f: 
+    f.write(str(0)) 
+  with open('power.txt', 'w') as f: 
+    f.write(str(0))    
 
 #If the turn off button was submitted, set angle to 0
 elif ('off' in data): 

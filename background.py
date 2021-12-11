@@ -25,7 +25,7 @@ GPIO.output(ledPinBalls,1)
 try:
   while True: 
     with open('angle.txt', 'r') as f:
-      angleNEW = int(f.read())
+      angle = int(f.read())
     with open('power.txt', 'r') as f:
       power = int(f.read())
     time.sleep(0.5)
@@ -35,8 +35,8 @@ try:
 
     #Read angle input from user in file
     #Calculate the required angle of movement needed  
-    angle = angleNEW - anglePREV
-    launchCheck = power-powerPREV
+    #angle = angleNEW - anglePREV
+    #launchCheck = power-powerPREV
     #if angle > 0:
     #  dir = 1  #clockwise
     #if angle < 0:
@@ -45,21 +45,20 @@ try:
     dir = 1
 
     #Reset function if angle is set to 0 (from cgi file)
-    if angleNEW == 0:
-      angle = 0
-      launchCheck = 0
+    if angle == 0:
+      power = 0
       GPIO.setup(ledPinReset, GPIO.OUT)  
       GPIO.output(ledPinReset,0) 
     #  print('Set to 0')
     #  stepper.goAngle(90,-1)
 
-    elif launchCheck != 0 or angle != 0:
+    elif power != 0 or angle != 0:
       #if light<190:
         GPIO.setup(ledPinReset, GPIO.OUT)
         GPIO.output(ledPinReset,1)  
-        print(angleNEW)
+        print(angle)
         stepper.goAngle(angle,dir)
-        time.sleep(0.2)
+        time.sleep(1)
 
         GPIO.setup(ledPinLaunch, GPIO.OUT)
         GPIO.output(ledPinLaunch,0) 
@@ -78,8 +77,8 @@ try:
         #time.sleep(0.2)  
 
     #Set the previous angle to the current angle for next iteration
-    anglePREV = angleNEW
-    powerPREV = power
+    #anglePREV = angleNEW
+    #powerPREV = power
     
 except KeyboardInterrupt:
   GPIO.cleanup()
