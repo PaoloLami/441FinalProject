@@ -53,7 +53,7 @@ try:
     #  stepper.goAngle(90,-1)
 
     elif power != 0 or angle != 0:
-      if light<1655:
+      if light<1645:
         GPIO.setup(ledPinReset, GPIO.OUT)
         GPIO.output(ledPinReset,1)  
         print(angle)
@@ -71,7 +71,7 @@ try:
         GPIO.output(ledPinReset,0) 
         print('Resetting')
         stepper.goAngle(90,-1)
-      elif light>=1655:
+      elif light>=1645:
         print("No balls remaining, please insert ball")
         GPIO.setup(ledPinReset, GPIO.OUT)
         GPIO.output(ledPinReset,1)
