@@ -37,11 +37,12 @@ try:
     #Calculate the required angle of movement needed  
     angle = angleNEW - anglePREV
     launchCheck = power-powerPREV
-    if angle > 0:
-      dir = 1  #clockwise
-    if angle < 0:
-      dir = -1 #counterclockwise if the new angle is lower than previous
-      angle = abs(angle)
+    #if angle > 0:
+    #  dir = 1  #clockwise
+    #if angle < 0:
+    #  dir = -1 #counterclockwise if the new angle is lower than previous
+    #  angle = abs(angle)
+    dir = 1
 
     #Reset function if angle is set to 0 (from cgi file)
     if angleNEW == 0:
@@ -49,8 +50,8 @@ try:
       launchCheck = 0
       GPIO.setup(ledPinReset, GPIO.OUT)  
       GPIO.output(ledPinReset,0) 
-      print('Set to 0')
-      stepper.goAngle(90,-1)
+    #  print('Set to 0')
+    #  stepper.goAngle(90,-1)
 
     elif launchCheck != 0 or angle != 0:
       #if light<190:
@@ -66,6 +67,11 @@ try:
         print("Launching!") 
         Launch.Launch(power)
         GPIO.output(ledPinLaunch,1) 
+
+        GPIO.setup(ledPinReset, GPIO.OUT)  
+        GPIO.output(ledPinReset,0) 
+        print('Resetting')
+        stepper.goAngle(90,-1)
       #elif light>=190:
         #print("No balls remaining, please insert ball")
         #print(light);
