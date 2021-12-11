@@ -34,9 +34,9 @@ pwmServo.start(dcMin)
 
 def Launch(power):
   pwm2.start(95)
-  time.sleep(1.5)
+  time.sleep(2)
   pwm1.start(95)
-  time.sleep(1.5)
+  time.sleep(2)
   
   if power == 1:
     dc1=70
@@ -67,8 +67,11 @@ def Launch(power):
   pwmServo.ChangeDutyCycle(dcMin)  
   time.sleep(1.5)  
 
+  pwm1.ChangeDutyCycle(0)
+  pwm2.ChangeDutyCycle(0)
+  time.sleep(1)  
+
+def turnoff():
   pwm1.stop(0)
   pwm2.stop(0)
-
-
 

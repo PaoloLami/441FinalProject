@@ -89,4 +89,5 @@ try:
     
 except KeyboardInterrupt:
   GPIO.cleanup()
+  Launch.turnoff()
   print("Exiting...")
