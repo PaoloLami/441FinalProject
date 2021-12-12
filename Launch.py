@@ -33,7 +33,9 @@ pwmServo = GPIO.PWM(servoPin, 50) # PWM object at 50 Hz (20 ms period)
 pwmServo.start(dcMin)
 
 def Launch(power):
- 
+  pwm1.start(0)
+  pwm2.start(0)
+  
   if power == 1:
     dc1=30
     dc2=35
