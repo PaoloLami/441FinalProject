@@ -58,7 +58,7 @@ try:
         GPIO.output(ledPinReset,1)  
         print(angle)
         stepper.goAngle(angle,dir)
-        time.sleep(2.5)
+        time.sleep(1.5)
 
         GPIO.setup(ledPinLaunch, GPIO.OUT)
         GPIO.output(ledPinLaunch,0) 
