@@ -68,7 +68,7 @@ try:
         Launch.Launch(power)
         GPIO.output(ledPinLaunch,1)
 
-        time.sleep(9)
+        time.sleep(2)
         dist = Ultrasonic.distance()
         print(dist)
         if dist < 10:
