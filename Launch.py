@@ -37,14 +37,14 @@ def Launch(power):
   pwm2.start(0)
 
   if power == 1:
-    dc1=50
+    dc1=53
     dc2=50
   elif power == 2:
-    dc1=65
-    dc2=65
+    dc1=63
+    dc2=60
   elif power==3:
-    dc1=75
-    dc2=75
+    dc1=73
+    dc2=70
   
   GPIO.output(Motor1cw,GPIO.LOW)
   GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
