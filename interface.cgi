@@ -22,7 +22,8 @@ if ('launch' in data):
   with open('angle.txt', 'w') as f: 
     f.write(str(0)) 
   with open('power.txt', 'w') as f: 
-    f.write(str(0))    
+    f.write(str(0))  
+
 
 #If the turn off button was submitted, set angle to 0
 elif ('off' in data): 
