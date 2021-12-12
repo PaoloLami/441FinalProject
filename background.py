@@ -66,13 +66,11 @@ try:
         #print(light)
         print("Launching!") 
         Launch.Launch(power)
-        GPIO.output(ledPinLaunch,1) 
-        GPIO.setup(ledPinReset, GPIO.OUT)  
-        GPIO.output(ledPinReset,0) 
-        print('Resetting')
-        stepper.goAngle(90,-1)
+        GPIO.output(ledPinLaunch,1)
+
         time.sleep(9)
         dist = Ultrasonic.distance()
+        print(dist)
         if dist < 10:
           for n in range(10):
             GPIO.output(ledPinLaunch,0) 
@@ -87,6 +85,12 @@ try:
             GPIO.output(ledPinReset,1)
             time.sleep(0.1)
           GPIO.output(ledPinReset,0) 
+
+        GPIO.setup(ledPinReset, GPIO.OUT)  
+        GPIO.output(ledPinReset,0) 
+        print('Resetting')
+        stepper.goAngle(90,-1)
+        
       elif light>=1675:
         print("No balls remaining, please insert ball")
         GPIO.setup(ledPinReset, GPIO.OUT)
