@@ -35,7 +35,7 @@ pwmServo.start(dcMin)
 def Launch(power):
   pwm1.start(0)
   pwm2.start(0)
-  
+
   if power == 1:
     dc1=30
     dc2=35
@@ -49,8 +49,8 @@ def Launch(power):
   GPIO.output(Motor1cw,GPIO.LOW)
   GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
 
-  GPIO.output(Motor2cw,GPIO.HIGH)
-  GPIO.output(Motor2ccw,GPIO.LOW) #turn HIGH for counterclockwise
+  GPIO.output(Motor2cw,GPIO.LOW)
+  GPIO.output(Motor2ccw,GPIO.HIGH) #turn HIGH for counterclockwise
 
   time.sleep(0.5)
  
