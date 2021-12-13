@@ -46,7 +46,7 @@ try:
     #Check if user submitted a launch sequence
     elif power != 0 or angle != 0:
       #Check photoresistor to see if balls are in or not
-      if light<1665:
+      if light<1630:
         GPIO.setup(ledPinReset, GPIO.OUT)
         GPIO.output(ledPinReset,1)  
         #Move stepper motor to desired angle
@@ -86,7 +86,7 @@ try:
         print('Resetting')
         stepper.goAngle(90,-1)
         
-      elif light>=1665:
+      elif light>=1630:
         print("No balls remaining, please insert ball")
         GPIO.setup(ledPinReset, GPIO.OUT)
         GPIO.output(ledPinReset,1)
