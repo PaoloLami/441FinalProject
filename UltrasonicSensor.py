@@ -41,6 +41,7 @@ def distance():
     return distance
  
 try:
+   print('code started') 
    while True:
       dist = distance()
       print ("Measured Distance = %.1f cm" % dist)
