@@ -1,16 +1,15 @@
+#Paolo Lami and Jake Crossan, ENME441 Final Project
 import RPi.GPIO as GPIO
 import time
 
-#PMW WORKS, NEEDS MORE THAN 6V PER MOTOR TO RUN with h bridge
-#SETUP shown here: https://www.rhydolabz.com/wiki/?p=11288
+#Using a Dual H-bridge to control both motors
 
 Motor1cw = 23 # Motor 1 +Red pin
 Motor1ccw = 24 # Motor 1 +Ground pin
 Motor2cw = 5 # Motor 2 +Red pin
 Motor2ccw = 6 # Motor 2 +Ground pin
-Motor1EN = 25 #Enabler for motor 1
-Motor2EN = 26 #Enabler for motor 2
-#Plug both Vcc to Pi 5V
+Motor1EN = 25 #Enabler for motor 1 pwm
+Motor2EN = 26 #Enabler for motor 2 pwm
 
 servoPin = 4
 
@@ -33,9 +32,11 @@ pwmServo = GPIO.PWM(servoPin, 50) # PWM object at 50 Hz (20 ms period)
 pwmServo.start(dcMin)
 
 def Launch(power):
+  #Turn on motors
   pwm1.start(0)
   pwm2.start(0)
 
+  #Depending on the power option selected, change speed (calibrated for straight shots)
   if power == 1:
     dc1=55
     dc2=50
@@ -46,18 +47,21 @@ def Launch(power):
     dc1=75
     dc2=70
   
+  #Set direction of motors (based on wiring)
   GPIO.output(Motor1cw,GPIO.LOW)
   GPIO.output(Motor1ccw,GPIO.HIGH) #turn HIGH for counterclockwise
 
-  GPIO.output(Motor2cw,GPIO.LOW)
-  GPIO.output(Motor2ccw,GPIO.HIGH) #turn HIGH for counterclockwise
+  GPIO.output(Motor2cw,GPIO.LOW)  #turn HIGH for counterclockwise
+  GPIO.output(Motor2ccw,GPIO.HIGH) 
 
   time.sleep(0.5)
  
+  #Turn on both motors to desired speed (based on power)
   pwm1.ChangeDutyCycle(dc1)
   pwm2.ChangeDutyCycle(dc2)
   time.sleep(5)
 
+  #Rotate the servo motor to push ball towards spinning motors
   for dc in range(dcMin,dcMax):
     pwmServo.ChangeDutyCycle(dc)
     time.sleep(0.025)
@@ -65,6 +69,7 @@ def Launch(power):
   pwmServo.ChangeDutyCycle(dcMin)  
   time.sleep(1.5)  
 
+  #Set speed of motors back to 0
   pwm1.ChangeDutyCycle(0)
   pwm2.ChangeDutyCycle(0)
   time.sleep(1)  

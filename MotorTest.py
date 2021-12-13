@@ -12,9 +12,7 @@ Motor1EN = 25 #Enabler for motor 1
 Motor2EN = 26 #Enabler for motor 2
 #Plug both Vcc to Pi 5V
 
-
 servoPin = 4
-
 
 dcMin = 3
 dcMax = 12

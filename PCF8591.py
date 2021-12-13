@@ -1,3 +1,4 @@
+#Paolo Lami and Jake Crossan, ENME441 Final Project
 import smbus
 
 class PCF8591:

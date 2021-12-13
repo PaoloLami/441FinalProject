@@ -1,5 +1,5 @@
 #!/usr/bin/python37all
-#441 Final
+#Paolo Lami and Jake Crossan, ENME441 Final Project
 
 import cgi
 import time
@@ -48,12 +48,7 @@ print('<TR ALIGN="CENTER" style="height:100px">')
 print('<TD><img src="https://atlas-content-cdn.pixelsquid.com/stock-images/red-plastic-cup-n1KXoxC-600.jpg" alt="Red Cup"') 
 print('width="80" height="80"><br>Target<br></TD></TR></TABLE><br></br>')
 print('<input type="submit" name = "launch" value="Launch">')
-print('<h3 ALIGN="CENTER">SCOREBOARD</h3>')
-print('<TABLE ALIGN="CENTER" BORDER="5"    WIDTH="50%"   CELLPADDING="4" CELLSPACING="3">')
-print('<tr><th>Launch Attempts</th><th>Balls in</th></tr>')
-print('<tr><td ALIGN="CENTER">3</td><td ALIGN="CENTER">1</td></tr>')
-print('</table><br></br>')
-print('<p ALIGN="CENTER">')
-print('If you wish to reset the scoreboard or turn off the game, click the button below:<br></br>')
-print('<input type="submit" name = "off" value="Turn Off"><br></br>')
+print('<br></br>')
+print('If you wish to turn off the game, click the button below:<br></br>')
+print('<input type="submit" name = "off" value="Turn Off">')
 print('</form>')

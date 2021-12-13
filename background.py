@@ -1,3 +1,4 @@
+#Paolo Lami and Jake Crossan, ENME441 Final Project
 import RPi.GPIO as GPIO
 from PCF8591 import PCF8591
 import stepper
@@ -5,9 +6,6 @@ import time
 import Launch
 import Ultrasonic
 
-#Set previous angle to 0 at start (needed for required halfsteps calculation first time)
-anglePREV = 0
-powerPREV = 0
 angle = 0
 launchCheck = 0
 sens = PCF8591(0x48)
@@ -15,6 +13,7 @@ light = sens.read(1)*10 #reads data from the photoresistor
 ledPinReset = 19
 ledPinLaunch = 13
 ledPinBalls=18
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(ledPinReset, GPIO.OUT)
 GPIO.setup(ledPinLaunch, GPIO.OUT)
@@ -34,15 +33,7 @@ try:
     light = sens.read(1)*10 #reads data from the photoresistor
     time.sleep(0.1)
 
-    #Read angle input from user in file
-    #Calculate the required angle of movement needed  
-    #angle = angleNEW - anglePREV
-    #launchCheck = power-powerPREV
-    #if angle > 0:
-    #  dir = 1  #clockwise
-    #if angle < 0:
-    #  dir = -1 #counterclockwise if the new angle is lower than previous
-    #  angle = abs(angle)
+    
     dir = 1
 
     #Reset function if angle is set to 0 (from cgi file)
@@ -102,10 +93,6 @@ try:
           GPIO.output(ledPinBalls,1)
           time.sleep(0.1)
         GPIO.output(ledPinBalls,1)
-        
-    #Set the previous angle to the current angle for next iteration
-    #anglePREV = angleNEW
-    #powerPREV = power
     
 except KeyboardInterrupt:
   GPIO.cleanup()

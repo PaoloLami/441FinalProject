@@ -1,4 +1,4 @@
-#Paolo Lami, ENME441 Lab5
+#Paolo Lami and Jake Crossan, ENME441 Final Project
 import RPi.GPIO as GPIO
 import time
         
