@@ -23,6 +23,7 @@ GPIO.output(ledPinLaunch,1)
 GPIO.output(ledPinBalls,1)
 
 try:
+  #Read data from text file
   while True: 
     with open('angle.txt', 'r') as f:
       angle = int(f.read())
@@ -32,37 +33,38 @@ try:
 
     light = sens.read(1)*10 #reads data from the photoresistor
     time.sleep(0.1)
-
     
     dir = 1
 
-    #Reset function if angle is set to 0 (from cgi file)
+    #Check if angle is set to 0 in file (so it doesn't launch)
     if angle == 0:
       power = 0
+      #Turn on red light
       GPIO.setup(ledPinReset, GPIO.OUT)  
       GPIO.output(ledPinReset,0) 
-    #  print('Set to 0')
-    #  stepper.goAngle(90,-1)
 
+    #Check if user submitted a launch sequence
     elif power != 0 or angle != 0:
+      #Check photoresistor to see if balls are in or not
       if light<1675:
         GPIO.setup(ledPinReset, GPIO.OUT)
         GPIO.output(ledPinReset,1)  
-        print(angle)
+        #Move stepper motor to desired angle
         stepper.goAngle(angle,dir)
         time.sleep(1.5)
-
+        #Turn on green light
         GPIO.setup(ledPinLaunch, GPIO.OUT)
         GPIO.output(ledPinLaunch,0) 
-        #print(light)
         print("Launching!") 
+        #Start launching sequence
         Launch.Launch(power)
         GPIO.output(ledPinLaunch,1)
-
+        #Check ultrasonic sensor to detect if ball landed on target
         time.sleep(2)
         dist = Ultrasonic.distance()
         print(dist)
-        if dist < 10:
+        if dist < 13.4:
+          #Flash green light if the ball went in
           for n in range(10):
             GPIO.output(ledPinLaunch,0) 
             time.sleep(0.3)
@@ -70,15 +72,17 @@ try:
             time.sleep(0.1)
           GPIO.output(ledPinLaunch,1) 
         else:
+          #Flash red light if ball did not go in
           for n in range(10):
             GPIO.output(ledPinReset,0) 
             time.sleep(0.3)
             GPIO.output(ledPinReset,1)
             time.sleep(0.1)
           GPIO.output(ledPinReset,0) 
-
+        #Turn on red light once launching is complete
         GPIO.setup(ledPinReset, GPIO.OUT)  
         GPIO.output(ledPinReset,0) 
+        #Return cannon to starting position
         print('Resetting')
         stepper.goAngle(90,-1)
         
@@ -87,6 +91,7 @@ try:
         GPIO.setup(ledPinReset, GPIO.OUT)
         GPIO.output(ledPinReset,1)
         GPIO.setup(ledPinBalls, GPIO.OUT)
+        #Flash warning blue light
         for n in range(7):
           GPIO.output(ledPinBalls,0) 
           time.sleep(0.6)

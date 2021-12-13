@@ -2,7 +2,7 @@
 import RPi.GPIO as GPIO
 import time
  
-#https://tutorials-raspberrypi.com/raspberry-pi-ultrasonic-sensor-hc-sr04/ 
+#Code taken from https://tutorials-raspberrypi.com/raspberry-pi-ultrasonic-sensor-hc-sr04/ 
 #GPIO Mode (BOARD / BCM)
 GPIO.setmode(GPIO.BCM)
  
